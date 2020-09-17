@@ -1,7 +1,6 @@
 ### MPU6050 via ESP32 BT
 
-This is a project I started to better learn how to use various tools.
-Namely: 
+This is a project I started to better learn how to use various tools, namely: 
 1. the ESP32 microcontroller (especially its bluetooth functionality)
 2. the MPU6050 gyroscope and accelerometer
 3. OpenGL
