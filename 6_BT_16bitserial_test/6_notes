@@ -1,0 +1,16 @@
+---16-08-2020---
+here I tried to send over all the necessary data using only 2 bytes (16 bits)
+
+I tried to shift the intiger reading to the right by 2 bits, destroying those bits of information. This seemed fine though since I don't think we need that much precision. I then tried using the 2 MSB of the 16bit number as a sort of indicator as to which data we are sending. x-coordinate = 00, y = 01 etc.
+
+This went wrong soemwhere along the lines though. I think I mostly managed to send the correct bytes through the BT serial (so from the ESP code).
+	except for one issue, when the 16bit number didn't have any 1 bits in the MSbyte and we are sending an x coordinate, then all of the bits in that byte are 0 and I think then C++ automatically truncates it from out intiger even though we specified it was a int16_t.
+
+besides that issue, these was some fuckery happening in the python code trying to parse the bits correctly. For some reason python sucks at handling bytes/bits and so it was really hard to do exactly what I wanted to.
+
+anyway. for now I'll be sticking to just sending 3 bytes of info for each reading: 1 byte for the axis and 2 bytes for the 16bit integer.
+
+
+---17-08-2020---
+ok so now I managed to fins all the issues. I am using the correct bit logic and can now send over the data using just 2 bytes!
+I'll now merge 6 and 7 together into 8
